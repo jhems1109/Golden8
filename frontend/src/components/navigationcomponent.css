@@ -1,0 +1,15 @@
+.justify-content-center {
+    gap: 5rem;
+  }
+
+.navbar-brand{
+    padding-left: 1.5%; 
+}
+
+.nav-center{
+    justify-content: center;
+}
+
+.pad-icons{
+  margin-left: 0.4rem;
+}

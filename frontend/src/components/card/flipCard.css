@@ -1,0 +1,142 @@
+.card-wrapper {
+    /* Sizing */
+    width: 100% !important; 
+    height: 100% !important; 
+
+    transform-style: preserve-3d; 
+
+    /* Content Alignment */
+    position: relative; 
+
+    /* Styling */
+    
+    border: 5px solid white;
+    /* box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);  */
+    border-radius: 25px !important; 
+    transition: transform 1000ms; 
+
+    user-select: none; 
+    cursor: pointer; 
+}
+
+/* .card:hover {
+    transform: rotateY(180deg); 
+} */
+
+.scrollable-container {
+    max-height: 150px; /* Adjust this value as needed */
+    overflow-y: auto;
+  }
+
+.card-front,
+.card-back {    
+    /* Sizing */ 
+    width: 100%;
+    height: 100%; 
+
+
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    /* Alignment */ 
+    position: absolute; 
+
+    /* Content Alignment */
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+
+    /* Content Styling */
+    font-family: Montserrat;
+    color: white; 
+}
+
+.card-front {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    border-radius: 25px; 
+    font-weight: 800;
+    font-size: 40px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.9); 
+}
+
+.card-back {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    padding-top: 10px; 
+    transform: rotateY(180deg); 
+    background-color: #3f2e1e;
+    border-radius: 25px; 
+    font-weight: 200;
+    font-size: 20px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.9); 
+    word-wrap: break-word;
+}
+
+.team-link {
+    text-decoration: none;
+    text-shadow: none;
+    font-size: 20px;
+    color: #2C3531;
+}
+
+.team-link:hover {
+    color: #116466;
+}
+
+.logo-container {
+    width: 25px; /* adjust as needed */
+    height: 25px; /* adjust as needed */
+    margin-right: 25px;
+}
+
+.team-logo {
+  width: 25px; /* Adjust logo size as needed */
+  height: 25px;
+  object-fit: cover;
+}
+
+.default-icon {
+    margin-bottom: 50px;
+}
+.team-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.card-text {
+    color: white; /* Initial color */
+    text-decoration: none;
+}
+
+.card-text:hover {
+    color: #D1E8E2; /* Change to your preferred hover color */
+}
+
+.overlay {
+    position: absolute;
+    top: 5%;
+    color: white;    
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-front:hover .overlay {
+    opacity: 1;
+}
+
+.card-text {
+    color: white; 
+    text-decoration: none;
+}
+
+.card-text:hover {
+    color: #D9B08C;
+}
