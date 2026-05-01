@@ -186,21 +186,20 @@ const Home = () => {
                 backgroundImage: "url('/images/homePagephoto.jpg')",
                 backgroundSize: "cover",
                 width: "100%",
+                height: "auto",
               }}
             >
-              <h1
-                className="animated-text outlined-text"
-                style={{
-                  color: "white",
-                  opacity: opacity,
-                  transition: "opacity 5s",
-                  paddingLeft: "40%",
-                  paddingTop: "35%",
-                  fontSize: "5vw",
-                }}
-              >
-                Golden 8 Beach Resort, <br /> where fun starts
-              </h1>
+              <h1 className="animated-text seriftext"
+              style={{
+                fontFamily: "Georgia, serif",
+                fontStyle: "italic",
+                color: "white",
+                textShadow: "2px 2px 4px #000000",
+                fontSize: "6vw",
+                letterSpacing: ".1rem",
+                padding: "20% 10%",
+              }}
+              >Golden 8 Beach Resort</h1>
             </div>
 
             <div style={{ width: "100%", position: "relative" }}>

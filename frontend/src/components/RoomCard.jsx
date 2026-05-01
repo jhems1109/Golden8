@@ -53,9 +53,14 @@ const RoomCard = ({
       <hr />
       <div className="d-flex justify-content-between px-5 py-2">
         <div
-          className="d-flex align-items-center fw-bold fs-3 outlined-text"
+          className="d-flex align-items-center fw-bold fs-3 seriftext"
           onClick={onClick}
-          style={{ cursor: "pointer"}}
+          style={{ cursor: "pointer",
+            fontFamily: "Georgia, serif",
+            fontStyle: "italic",
+            color: "white",
+            textShadow: "2px 2px 4px #000000",
+          }}
         >
           {statusIcon()}
           {`${roomName}`}
