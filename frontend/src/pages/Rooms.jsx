@@ -36,7 +36,7 @@ export default function Rooms() {
     <>
       {isLoadingRooms ? (
         <div className="loading-overlay">
-          <div>Loading rooms...</div>
+          <div>Loading ...</div>
           <div className="loading-spinner"></div>
         </div>
       ) : (

@@ -188,7 +188,7 @@ const Notification = () => {
       {!isSignedIn && <div>{checkIfUserIsSignedIn()}</div>}
       {isLoading ? (
         <div className="loading-overlay">
-          <div>Loading...</div>
+          <div>Loading ...</div>
           <div className="loading-spinner"></div>
         </div>
       ) : (

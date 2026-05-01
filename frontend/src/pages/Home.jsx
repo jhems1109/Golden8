@@ -175,7 +175,7 @@ const Home = () => {
     <>
       {isLoadingRooms ? (
         <div className="loading-overlay">
-          <div>Loading top rooms...</div>
+          <div>Loading ...</div>
           <div className="loading-spinner"></div>
         </div>
       ) : (
@@ -189,7 +189,7 @@ const Home = () => {
               }}
             >
               <h1
-                className="animated-text"
+                className="animated-text outlined-text"
                 style={{
                   color: "white",
                   opacity: opacity,

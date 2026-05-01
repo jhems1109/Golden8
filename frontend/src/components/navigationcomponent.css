@@ -3,7 +3,7 @@
   }
 
 .navbar-brand{
-    padding-left: 1.5%; 
+    padding-left: 1%; 
 }
 
 .nav-center{
@@ -11,5 +11,23 @@
 }
 
 .pad-icons{
-  margin-left: 0.4rem;
+  margin-right: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: row;
+  }
+  .smscreen {
+    max-width: 30%;
+  }
+  .phoneicon {
+    padding: 2% 2% !important;
+    max-width: 0.6em;
+    max-height: 0.6em
+  }
+  .phoneicon2 {
+    max-width: 4em;
+    max-height: 4em
+  }
 }

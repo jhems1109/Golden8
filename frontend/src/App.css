@@ -378,7 +378,7 @@ aside#sidebar .team-btw-match ul li.vs span {
 }
 
 .outlined-text {
-  -webkit-text-stroke: 0.1rem rgb(0, 0, 0); /* width color */
+  -webkit-text-stroke: 0.05rem rgb(0, 0, 0); /* width color */
   color:  rgb(255, 255, 255);                 /* inner fill color */
 }
 
@@ -399,6 +399,22 @@ aside#sidebar .team-btw-match ul li.vs span {
   }
   .modal-content {
     max-width: 20rem;
+  }
+  .inlineblk {
+    display: inline-block !important;
+  }
+  .room-details-pics-listing {
+    width: 100% !important;
+    height: auto;
+  }
+  .textlist {
+    padding-right: 0.1em !important;
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+  }
+  .smlimg {
+    width: 80% !important;
+    height: 80% !important;
   }
 }
 
@@ -466,31 +482,31 @@ body {
 .trialbtn {
   cursor: pointer !important;
   position: relative !important;
-  padding: 0.5rem 0.5rem !important;
+  padding: 10% 10% !important;
   background: #6885a1 !important;
   color: white !important;
-  font-size: 1rem !important;
+  font-size: 50% !important;
   border-top-right-radius: 10px !important;
   border-bottom-left-radius: 10px !important;
   transition: all 500ms !important;
   &:after,
   &:before {
     content: " ";
-    width: 1rem !important;
-    height: 1rem !important;
+    width: 50% !important;
+    height: 50% !important;
     position: absolute !important;
     border: 0px solid #fff !important;
     transition: all 500ms !important;
   }
   &:after {
-    top: -0.1rem !important;
-    left: -0.1rem !important;
+    top: -10% !important;
+    left: -10% !important;
     border-top: 0.1rem solid white !important;
     border-left: 0.1rem solid white !important;
   }
   &:before {
-    bottom: -0.1rem !important;
-    right: -0.1rem !important;
+    bottom: -10% !important;
+    right: -10% !important;
     border-bottom: 0.1rem solid white !important;
     border-right: 0.1rem solid white !important;
   }

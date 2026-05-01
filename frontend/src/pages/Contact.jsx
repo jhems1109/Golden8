@@ -87,12 +87,14 @@ const Contact = () => {
           paddingBottom: "1rem",
           textAlign: "center",
         }}
+        
       >
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3831.7764635572207!2d122.01833017519992!3d16.18047393645007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x339af50c4a5bb70f%3A0x83a0fd8fdff14b08!2sGOLDEN%208%20BEACH%20RESORT!5e0!3m2!1sen!2sph!4v1776943787516!5m2!1sen!2sph"
           width="50%"
-          height="400px"
-          title="Newnham Campus Google Map"
+          height="100%"
+          title="Golden 8 Resort Casiguran Google Map"
+          className="smlimg"
         ></iframe>
       </div>
       <div

@@ -127,7 +127,7 @@ const RoomDetails = () => {
     <>
       {isLoading ? (
         <div className="loading-overlay">
-          <div>Loading top rooms...</div>
+          <div>Loading ...</div>
           <div className="loading-spinner"></div>
         </div>
       ) : (

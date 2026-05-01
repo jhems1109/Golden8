@@ -29,30 +29,30 @@ const NavigationComponent = () => {
                 src="/images/mainlogo.jpg"
                 alt="Golden8-lg"
                 border="0"
-                style={{ width: "4em" }}
-                className="m-auto Sirv image-main"
+                style={{ width: "3.5em"}}
+                className="m-auto Sirv image-main smscreen"
               />
             </Navbar.Brand>
           </Col>
-          <Col className="">
+          <Col>
             <Navbar.Collapse className="justify-content-end">
               <Nav>
                 {isSignedIn === true && (
-                    <Nav.Link title="Notifications" className="trialbtn pad-icons" href="/notifications" >
+                    <Nav.Link title="Notifications" className="trialbtn pad-icons phone" href="/notifications" >
                       <Badge
                         badgeContent={notificationCount}
                         style={{ fontSize: 30 }}
                         color="error"
                         max={100}
                       >
-                        <FaBell className="m-auto" style={{ width: "2rem", height: "2rem"}}/>
+                        <FaBell className="m-auto phoneicon" style={{ width: "0.7em", height: "0.7em"}}/>
                       </Badge>
                     </Nav.Link>
                 )}
                 {isSignedIn === true && (
-                  <Dropdown title="Profile">
-                    <Dropdown.Toggle className="trialbtn pad-icons">
-                      <FaUserCircle className="m-auto" style={{ width: "2rem", height: "2rem"}} />
+                  <Dropdown title="Profile" className="pad-icons" >
+                    <Dropdown.Toggle className="trialbtn" >
+                      <FaUserCircle className="m-auto phoneicon2" style={{ width: "5em", height: "5em"}} />
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="dropdown-menu dropdown-menu-end">
                       {!isAdmin && (
@@ -97,9 +97,9 @@ const NavigationComponent = () => {
                     </Dropdown.Menu>
                   </Dropdown>
                 )}
-                <Dropdown title="Menu">
-                  <Dropdown.Toggle className="trialbtn pad-icons">
-                    <IoMenu className="m-auto" style={{ width: "2rem", height: "2rem"}}/>
+                <Dropdown title="Menu" className="pad-icons">
+                  <Dropdown.Toggle className="trialbtn">
+                    <IoMenu className="m-auto phoneicon2" style={{ width: "5em", height: "5em"}}/>
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="dropdown-menu dropdown-menu-end">
                     <>
