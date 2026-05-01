@@ -97,7 +97,7 @@ const NavigationComponent = () => {
                     </Dropdown.Menu>
                   </Dropdown>
                 )}
-                <Dropdown title="Menu" className="pad-icons">
+                <Dropdown title="Menu" className="">
                   <Dropdown.Toggle className="trialbtn">
                     <IoMenu className="m-auto phoneicon2" style={{ width: "5em", height: "5em"}}/>
                   </Dropdown.Toggle>
