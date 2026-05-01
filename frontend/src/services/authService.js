@@ -3,7 +3,7 @@ import axios from "axios";
 const BASE_URL =
   import.meta.env.MODE === "development"
     ? "http://localhost:8000/api/users"
-    : "https://golden8.onrender.com";
+    : "https://golden8.onrender.com/api/users";
 
 async function login(email, password) {
   try {
