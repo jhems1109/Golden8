@@ -45,8 +45,8 @@ app.use(
     //origin: "https://golden8.netlify.app",
     origin: [
       //"http://127.0.0.1:5173",
-      "https://golden8.netlify.app/",
-      "http://localhost:5173",
+      "https://golden8.netlify.app",
+      //"http://localhost:5173",
     ],
     exposedHeaders: ["*", "Authorization"],
     optionsSuccessStatus: 200,
