@@ -22,7 +22,7 @@ const Contact = () => {
 
   const handleMsg = (e) => {
     const field = e.target.name;
-    setCurrentValues({ ...currValues, [field]: e.target.value.trim() });
+    setCurrentValues({ ...currValues, [field]: e.target.value });
   };
 
   const navigate = useNavigate();

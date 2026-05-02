@@ -83,7 +83,7 @@ const RoomCard = ({
       </div>
       <div>
         <Collapse in={open}>
-          <div id={`room-card`} className="card m-3">
+          <div id={`room-card`} className="card m-3 bg-light bg-opacity-10">
             <Row>
               <div className="card-body d-flex flex-row overflow-auto">
                 <Col className="col-4">
@@ -115,7 +115,7 @@ const RoomCard = ({
                     </div>
                   </div>
                 </Col>
-                <Col  className="col-8 fs-4 ">
+                <Col  className="col-8 fs-4" style={{color: "white", textShadow: "3px 3px 5px #040f43"}}>
                   <div className="room-details px-3 fw-bold">
                     <div className="textlist">
                       <p className="p-0 m-0" style={{ marginTop: "10%" }}>

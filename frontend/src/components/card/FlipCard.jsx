@@ -20,7 +20,7 @@ const FlipCard = ({ onClick, imageUrl, cardText, shortDesc, roomId }) => {
       </div>
 
       <div
-        className="card-front"
+        className="card-front border border-success"
         style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover' }}
       >
         <Link className="card-text" to={`/room/${roomId}`}>

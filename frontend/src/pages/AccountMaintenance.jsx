@@ -145,7 +145,7 @@ const AccountMaintenance = () => {
 
   const handleAccountDetails = (e) => {
     const field = e.target.name;
-    const fieldValue = e.target.value.trim();
+    const fieldValue = e.target.value;
     setCurrentValues({ ...currValues, [field]: fieldValue });
   };
 
@@ -378,13 +378,13 @@ const AccountMaintenance = () => {
                       
                         <button
                           onClick={() => handleImageRemove()}
-                          className="btn btn-secondary mb-3 mx-1 btn-sm"
+                          className="btn btn-secondary m-3 btn-sm"
                         >
                           Remove
                         </button>
                         <button
                           type="button"
-                          className="btn btn-secondary mb-3 btn-sm"
+                          className="btn btn-secondary m-3 btn-sm"
                           onClick={(e) => handleUploadClick(e)}
                         >
                           Replace
@@ -398,7 +398,7 @@ const AccountMaintenance = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
                         className="rounded mw-100 mb-3 border border-secondary"
-                        style={{ width: "100rem", height: "13rem" }}
+                        style={{ width: "20em", height: "20em" }}
                         viewBox="0 0 16 16"
                       >
                         <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />

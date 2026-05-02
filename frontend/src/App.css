@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@500&display=swap');
-@import url('https://db.onlinewebfonts.com/c/be9a43357e0fe07642191e4b32995385?family=Avenir+Next+LT+W02+Regular');
+@import url("https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@500&display=swap");
+@import url("https://db.onlinewebfonts.com/c/be9a43357e0fe07642191e4b32995385?family=Avenir+Next+LT+W02+Regular");
 
-:root{
-  --black: #2C3531;
+:root {
+  --black: #2c3531;
   --green: #116466;
-  --brown: #D9B08C;
-  --lightBrown: #FFCB9A;
-  --lightBlue: #D1E8E2;
-  --pink: #D65472;
+  --brown: #d9b08c;
+  --lightBrown: #ffcb9a;
+  --lightBlue: #d1e8e2;
+  --pink: #d65472;
 }
 
 .card-wrapper {
@@ -18,10 +18,10 @@
   align-items: center;
 }
 
-.general-link-no-dec{
+.general-link-no-dec {
   text-decoration: none;
   color: black;
-  &:hover{
+  &:hover {
     text-decoration: underline;
   }
 }
@@ -80,56 +80,58 @@
   }
 }
 
-.passive-active-column{
-
+.passive-active-column {
   background-color: white;
-  &:hover{
+  &:hover {
     background-color: #e5e6e7;
   }
 }
 
-.room-details-pics-listing{
+.room-details-pics-listing {
   transition: background-color 0.5s ease;
-  border-radius: 20%;
-  &:hover{
+  border-radius: 10%;
+  &:hover {
     transition: background-color 0.5s ease;
     background-color: rgb(221, 215, 215);
     border-radius: 20%;
   }
-  
 }
 
+.text-inter-word {
+  text-align: justify;
+  text-justify: inter-word;
+}
 
-.header-text-info{
-  font-family:"Saira Extra Condensed";
+.header-text-info {
+  font-family: "Saira Extra Condensed";
   font-weight: bold;
   font-size: 4rem;
 }
 
-.information-text{
-  font-family:"Avenir Next LT W02 Regular";
+.information-text {
+  font-family: "Avenir Next LT W02 Regular";
   font-weight: bold;
   color: #f1f1f1;
-    text-shadow: 1px 1px black;
+  text-shadow: 1px 1px black;
 }
 
-.team-jersey-list-number{
-  font-family:"Saira Extra Condensed";
-  color:white;
+.team-jersey-list-number {
+  font-family: "Saira Extra Condensed";
+  color: white;
   text-decoration: none;
 }
 
 aside#sidebar .team-btw-match ul li.vs span {
-	background: transparent !important;
-	display: flex;
-	height: 100%;
-	min-height: 50px;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
+  background: transparent !important;
+  display: flex;
+  height: 100%;
+  min-height: 50px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
-.zoom-in-style:hover{
+.zoom-in-style:hover {
   transform: scale(1.5);
   transition: 0.3s;
   border: 2px white;
@@ -146,7 +148,7 @@ aside#sidebar .team-btw-match ul li.vs span {
 
 .link-over-to-left::before,
 .link-over-to-left::after {
- content: '';
+  content: "";
   position: absolute;
   width: 100%;
   left: 0;
@@ -157,7 +159,7 @@ aside#sidebar .team-btw-match ul li.vs span {
   bottom: 0;
   transform-origin: 100% 50%;
   transform: scaleX(0);
-  transition: transform .3s ;
+  transition: transform 0.3s;
 }
 .link-over-to-left::after {
   content: attr(data-replace);
@@ -167,8 +169,8 @@ aside#sidebar .team-btw-match ul li.vs span {
   top: 0;
   transform-origin: 100% 50%;
   transform: translate3d(200%, 0, 0);
-  transition: transform .3s ;
-  background-color: rgba(255,255,255,.30);
+  transition: transform 0.3s;
+  background-color: rgba(255, 255, 255, 0.3);
   color: black;
 }
 
@@ -182,7 +184,7 @@ aside#sidebar .team-btw-match ul li.vs span {
 
 .link-over-to-left span {
   display: inline-block;
-  transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 .link-over-to-left:hover span {
@@ -196,38 +198,31 @@ aside#sidebar .team-btw-match ul li.vs span {
   margin-top: 2%;
 }
 
-.team-list-container
-{
-  background-color: rgba(0,0,0,0.50);
+.team-list-container {
+  background-color: rgba(0, 0, 0, 0.5);
 
-&:hover{
-  background-color: rgba(0,0,0,0.20)
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 }
-}
-.player-list-container
-{
-  background-color: rgba(37,38,46,1);
+.player-list-container {
+  background-color: rgba(37, 38, 46, 1);
 
-&:hover{
-  background-color: rgba(37,38,46,0.8);
-}
+  &:hover {
+    background-color: rgba(37, 38, 46, 0.8);
+  }
 }
 .player-list-names {
-  	transition: color .3s ease-in-out;
-	  color: var(--pink);
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-family:"Saira Extra Condensed";
-    
-    
+  transition: color 0.3s ease-in-out;
+  color: var(--pink);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family: "Saira Extra Condensed";
 
-
-  	
-	&:hover {
+  &:hover {
     color: black;
-  	}
+  }
 }
-
 
 .denemerow12 {
   display: flex;
@@ -267,11 +262,11 @@ aside#sidebar .team-btw-match ul li.vs span {
   z-index: 1;
   transition: 0.5s;
 }
-.search-list a{
+.search-list a {
   text-decoration: none;
   color: black;
 
-  &:hover{
+  &:hover {
     color: var(--green);
   }
 }
@@ -283,7 +278,7 @@ aside#sidebar .team-btw-match ul li.vs span {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #D1E8E2;
+  background: #d1e8e2;
   transform: scaleX(0);
   transform-origin: left;
   transition: 0.5s;
@@ -293,12 +288,14 @@ aside#sidebar .team-btw-match ul li.vs span {
 }
 
 .modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1000; 
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.9); /* Dark background */
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Dark background */
 }
 
 /* Enlarged image style */
@@ -316,12 +313,13 @@ aside#sidebar .team-btw-match ul li.vs span {
   max-width: 80rem;
   text-align: center;
   color: #ccc;
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   height: 50px;
 }
 
 /* Add Animation */
-.modal-content, #caption {  
+.modal-content,
+#caption {
   -webkit-animation-name: zoom;
   -webkit-animation-duration: 0.6s;
   animation-name: zoom;
@@ -329,25 +327,35 @@ aside#sidebar .team-btw-match ul li.vs span {
 }
 
 @-webkit-keyframes zoom {
-  from {-webkit-transform:scale(0)} 
-  to {-webkit-transform:scale(1)}
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
 }
 
 @keyframes zoom {
-  from {transform:scale(0)} 
-  to {transform:scale(1)}
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 /* Close button styling */
 .close {
   position: absolute;
-  top: 15px; right: 35px;
+  top: 15px;
+  right: 35px;
   color: white;
   font-size: 40px;
   cursor: pointer;
 }
 /* Next & previous buttons */
-#prev, #next {
+#prev,
+#next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -369,8 +377,9 @@ aside#sidebar .team-btw-match ul li.vs span {
 }
 
 /* On hover, add a black background color with a little bit see-through */
-#prev:hover, #next:hover {
-  background-color: rgba(0,0,0,0.8);
+#prev:hover,
+#next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .pos-abs {
@@ -379,7 +388,7 @@ aside#sidebar .team-btw-match ul li.vs span {
 
 .outlined-text {
   -webkit-text-stroke: 0.05rem rgb(0, 0, 0); /* width color */
-  color:  rgb(255, 255, 255);                 /* inner fill color */
+  color: rgb(255, 255, 255); /* inner fill color */
 }
 
 /* On screens that are 992px wide or less, go from four columns to two columns */
@@ -417,7 +426,6 @@ aside#sidebar .team-btw-match ul li.vs span {
     height: 80% !important;
   }
 }
-
 
 body {
   overflow-y: scroll; /* Show scrollbars */
@@ -477,101 +485,6 @@ body {
   transform-origin: bottom middle;
 }
 
-
-/* Search and Sign in buttons effects */
-.trialbtn {
-  cursor: pointer !important;
-  position: relative !important;
-  padding: 10% 10% !important;
-  background: #6885a1 !important;
-  color: white !important;
-  font-size: 50% !important;
-  border-top-right-radius: 10px !important;
-  border-bottom-left-radius: 10px !important;
-  transition: all 500ms !important;
-  &:after,
-  &:before {
-    content: " ";
-    width: 50% !important;
-    height: 50% !important;
-    position: absolute !important;
-    border: 0px solid #fff !important;
-    transition: all 500ms !important;
-  }
-  &:after {
-    top: -10% !important;
-    left: -10% !important;
-    border-top: 0.1rem solid white !important;
-    border-left: 0.1rem solid white !important;
-  }
-  &:before {
-    bottom: -10% !important;
-    right: -10% !important;
-    border-bottom: 0.1rem solid white !important;
-    border-right: 0.1rem solid white !important;
-  }
-  &:hover {
-    border-top-right-radius: 0px !important;
-    border-bottom-left-radius: 0px !important;
-    background: #bcd2da !important;
-    color: black !important;
-    &:before,
-    &:after {
-      width: 100% !important;
-      height: 100% !important;
-      /* border-color:white; */
-    }
-
-
-    /*.trialbtn {
-      cursor: pointer;
-      position: relative;
-      padding: 10px 20px;
-      background: #6885a1;
-      color: white;
-      font-size: 14px;
-      border-top-right-radius: 10px;
-      border-bottom-left-radius: 10px;
-      transition: all 500ms;
-      &:after,
-      &:before {
-        content: " ";
-        width: 0px;
-        height: 0px;
-        position: absolute;
-        border: 0px solid #fff;
-        transition: all 500ms;
-      }
-      &:after {
-        top: -1px;
-        left: -1px;
-        border-top: 1px solid white;
-        border-left: 1px solid white;
-      }
-      &:before {
-        bottom: -1px;
-        right: -1px;
-        border-bottom: 1px solid white;
-        border-right: 1px solid white;
-      }
-      &:hover {
-        border-top-right-radius: 0px;
-        border-bottom-left-radius: 0px;
-        background: #bcd2da;
-        color: black;
-        &:before,
-        &:after {
-          width: 100%;
-          height: 100%;
-
-          border-color: white;
-        }
-      }
-    }*/
-  }
-}
-
-
 /* Notification page */
 
 .icon-button {
@@ -581,7 +494,9 @@ body {
   cursor: pointer;
   display: inline;
   border-radius: 50%;
-  transition: background-color 0.3s, box-shadow 0.3s; /* Add box-shadow to the transition */
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s; /* Add box-shadow to the transition */
 }
 
 .icon-button:hover {
@@ -606,7 +521,9 @@ body {
   background-color: transparent;
   color: #333;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
   border-radius: 50%;
   margin: 0 5px;
 }
@@ -641,10 +558,9 @@ body {
 }
 
 .notification-checkbox {
-  width: 15px; 
-  height: 15px; 
+  width: 15px;
+  height: 15px;
 }
-
 
 .notification-list.selected {
   background-color: #f2f2f2;
@@ -663,7 +579,7 @@ body {
   content: "";
   height: 4px;
   width: 75px;
-  background-color: #29B6F6;
+  background-color: #29b6f6;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -691,7 +607,7 @@ body {
 }
 
 .notification-list--unread {
-  border-left: 2px solid #29B6F6;
+  border-left: 2px solid #29b6f6;
 }
 
 .notification-list .notification-list_content {
@@ -699,14 +615,12 @@ body {
   flex: 1; /* Take the remaining width */
 }
 
-
 .notification-list .notification-list_content .notification-list_img img {
   height: 48px;
   width: 48px;
   border-radius: 50px;
   margin-right: 20px;
 }
-
 
 .notification-list .notification-list_feature-img {
   flex: 1; /* Take the remaining width */
@@ -719,7 +633,6 @@ body {
   border-radius: 5px;
   /* Removed margin-left */
 }
-
 
 .disabled {
   cursor: not-allowed;
@@ -776,7 +689,9 @@ body {
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s, opacity 0.3s;
+  transition:
+    background-color 0.3s,
+    opacity 0.3s;
 }
 
 /* Style for decline button */
@@ -788,7 +703,9 @@ body {
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s, opacity 0.3s;
+  transition:
+    background-color 0.3s,
+    opacity 0.3s;
 }
 .approve-button.disabled {
   background-color: #cccccc;
@@ -800,19 +717,18 @@ body {
 .approval-button span,
 .decline-button span {
   display: inline-block;
-  width: 100%; 
+  width: 100%;
   text-align: center;
 }
 
 /* Change background color on hover */
 .approval-button:hover {
-  background-color: darkgreen; 
+  background-color: darkgreen;
 }
 
 .decline-button:hover {
   background-color: darkred;
 }
-
 
 /* Add this to your CSS */
 .loading-overlay {
@@ -826,12 +742,11 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  
 }
 
 .loading-spinner {
   position: relative;
-  width: 60px; 
+  width: 60px;
   height: 60px;
 }
 
@@ -859,11 +774,13 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
-
-
 
 /* Match details css */
 @keyframes fade-in {

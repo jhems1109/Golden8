@@ -187,7 +187,7 @@ const RoomDetails = () => {
                         currentTarget.onerror = null; // prevents looping
                         currentTarget.src = `/images/default logo.jpeg`;
                       }}
-                      className="border border-info shadow object-fit-cover "
+                      className="border shadow object-fit-cover "
                       roundedCircle
                       fluid
                       style={{ width: "10rem", height: "10rem" }}

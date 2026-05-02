@@ -1,17 +1,67 @@
 .justify-content-center {
-    gap: 5rem;
+  gap: 5rem;
+}
+
+.navbar-brand {
+  padding-left: 1%;
+}
+
+.nav-center {
+  justify-content: center;
+}
+
+.pad-icons {
+  margin-left: 1rem;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+/* notifications, profile, menu buttons effects */
+.trialbtn {
+  cursor: pointer !important;
+  position: relative !important;
+  padding: 10% !important;
+  background: #6885a1 !important;
+  color: white !important;
+  font-size: 50% !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+  transition: all 500ms !important;
+  &:after,
+  &:before {
+    content: " ";
+    width: 50% !important;
+    height: 50% !important;
+    position: absolute !important;
+    border: 0px solid #fff !important;
+    transition: all 500ms !important;
   }
-
-.navbar-brand{
-    padding-left: 1%; 
-}
-
-.nav-center{
-    justify-content: center;
-}
-
-.pad-icons{
-  margin-right: 1rem;
+  &:after {
+    top: -10% !important;
+    left: -10% !important;
+    border-top: 0.1rem solid white !important;
+    border-left: 0.1rem solid white !important;
+  }
+  &:before {
+    bottom: -10% !important;
+    right: -10% !important;
+    border-bottom: 0.1rem solid white !important;
+    border-right: 0.1rem solid white !important;
+  }
+  &:hover {
+    border-top-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    background: #bcd2da !important;
+    color: black !important;
+    &:before,
+    &:after {
+      width: 100% !important;
+      height: 100% !important;
+      /* border-color:white; */
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -22,12 +72,7 @@
     max-width: 30%;
   }
   .phoneicon {
-    padding: 2% 2% !important;
-    max-width: 0.6em;
-    max-height: 0.6em
-  }
-  .phoneicon2 {
-    max-width: 4em;
-    max-height: 4em
+    max-width: 3em;
+    max-height: 3em;
   }
 }

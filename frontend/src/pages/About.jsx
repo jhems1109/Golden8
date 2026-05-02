@@ -70,7 +70,7 @@ const About = () => {
             <Card style={{ backgroundColor: "transparent", border: "none" }}>
               <Card.Body>
                 <Card.Title>OUR STORY STARTS HERE</Card.Title>
-                <Card.Text className="text-dark">
+                <Card.Text className="text-dark text-inter-word">
                   {texts.message1}
                 </Card.Text>
               </Card.Body>
@@ -84,7 +84,7 @@ const About = () => {
               <br></br>
               <br></br>
               <Card.Body>
-                <p>{texts.message2}</p>
+                <p className="text-dark text-inter-word">{texts.message2}</p>
               </Card.Body>
             </Card>
           </div>

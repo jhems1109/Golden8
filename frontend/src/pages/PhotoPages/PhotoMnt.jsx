@@ -104,7 +104,7 @@ const PhotoMnt = () => {
     if (arrOfNumerics.find((e) => e === field)) {
       setCurrentValues({ ...currValues, [field]: Number(e.target.value) });
     } else {
-      setCurrentValues({ ...currValues, [field]: e.target.value.trim() });
+      setCurrentValues({ ...currValues, [field]: e.target.value });
     }
   };
 
@@ -290,7 +290,7 @@ const PhotoMnt = () => {
                       id="image"
                       alt="profile picture"
                       className="rounded mw-100 mb-2 border border-secondary"
-                      style={{ width: "100rem", height: "13rem" }}
+                      style={{ width: "20em", height: "20em" }}
                     />
                     <button
                       type="button"
