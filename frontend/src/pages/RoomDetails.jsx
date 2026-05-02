@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Container, Row, Col, Button, Card, Image, ListGroup } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Card,
+  Image,
+  ListGroup,
+} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { BsGearFill } from "react-icons/bs";
@@ -139,8 +147,7 @@ const RoomDetails = () => {
             {isSignedIn && roomInfo.displayUpdateButton === true && (
               <Button
                 onClick={navigateUpdate}
-                variant="transparent"
-                className="trialbtn"
+                className="btn btn-light btn-outline-dark"
               >
                 <BsGearFill
                   className="m-auto"
@@ -167,7 +174,6 @@ const RoomDetails = () => {
                 style={{
                   backgroundImage: "url('/images/default banner.jpeg')",
                   backgroundSize: "cover",
-                 
                 }}
               >
                 <Container
@@ -208,8 +214,6 @@ const RoomDetails = () => {
               <Row style={{ paddingTop: "5rem" }}>
                 <Col className="border">
                   <div className="team-past-matches">
-                    
-
                     <section>
                       <div className="container">
                         <div className="align-items-center border justify-content-center">
