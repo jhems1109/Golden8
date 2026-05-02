@@ -193,8 +193,8 @@ const RoomDetails = () => {
                       style={{ width: "10rem", height: "10rem" }}
                     />
                     <Col>
-                      <h1 className="header-text-info">{roomInfo.roomName}</h1>
-                      <p className="mt-5 information-text">
+                      <h1 className="header-text-info p-3">{roomInfo.roomName}</h1>
+                      <p className="mt-5 information-text text-inter-word">
                         {roomInfo.description}
                       </p>
                       <p className="mt-5 information-text">

@@ -102,6 +102,10 @@
   text-justify: inter-word;
 }
 
+.lineht {
+  line-height: 125%
+}
+
 .header-text-info {
   font-family: "Saira Extra Condensed";
   font-weight: bold;

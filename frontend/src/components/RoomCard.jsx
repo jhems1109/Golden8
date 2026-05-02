@@ -115,7 +115,7 @@ const RoomCard = ({
                     </div>
                   </div>
                 </Col>
-                <Col  className="col-8 fs-4" style={{color: "white", textShadow: "3px 3px 5px #040f43"}}>
+                <Col  className="col-8 fs-4 text-inter-word lineht" style={{color: "white", textShadow: "3px 3px 5px #040f43"}}>
                   <div className="room-details px-3 fw-bold">
                     <div className="textlist">
                       <p className="p-0 m-0" style={{ marginTop: "10%" }}>
