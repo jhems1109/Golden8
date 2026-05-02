@@ -180,7 +180,7 @@ const RoomDetails = () => {
                   style={{ "background-color": "rgba(0, 0, 0, 0.25)" }}
                   className="rounded"
                 >
-                  <Row className="text-center ms-3 mt-3">
+                  <Row className="text-center m-3">
                     <Image
                       src={`${backendLogos}/${roomInfo.roomName}.jpeg`}
                       onError={({ currentTarget }) => {
@@ -193,8 +193,8 @@ const RoomDetails = () => {
                       style={{ width: "10rem", height: "10rem" }}
                     />
                     <Col>
-                      <h1 className="header-text-info p-3">{roomInfo.roomName}</h1>
-                      <p className="mt-5 information-text text-inter-word">
+                      <h1 className="header-text-info p-3 mt-3">{roomInfo.roomName}</h1>
+                      <p className="mt-2 information-text text-inter-word">
                         {roomInfo.description}
                       </p>
                       <p className="mt-5 information-text">
