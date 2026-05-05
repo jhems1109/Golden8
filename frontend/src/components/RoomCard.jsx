@@ -19,6 +19,7 @@ const RoomCard = ({
   description,
   basePrice,
   maxPax,
+  imageURL,
   expanded,
   onClick,
 }) => {
@@ -100,7 +101,7 @@ const RoomCard = ({
                       <div>
                        
                         <Image
-                          src={`${backendLogos}/${roomName}.jpeg`}
+                          src={imageURL}
                           onError={({ currentTarget }) => {
                             currentTarget.onerror = null; // prevents looping
                             currentTarget.src = `/images/default logo.jpeg`;
@@ -149,6 +150,7 @@ RoomCard.propTypes = {
   description: PropTypes.string,
   basePrice: PropTypes.string,
   maxPax: PropTypes.number,
+  imageURL: PropTypes.string,
   expanded: PropTypes.bool,
   onClick: PropTypes.func,
 };

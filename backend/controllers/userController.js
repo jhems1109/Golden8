@@ -15,7 +15,9 @@ import {
   generateOTP,
   sendEmail,
 } from "../utils/auth.utils.js";
-import multer from "multer";
+//import multer from "multer";
+import { s3Storage } from "../config/s3-bucket.js";
+import { CopyObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 
 const registerUser = async (req, res) => {
   const { firstName, lastName, userName, email, password, phoneNumber } =
@@ -70,19 +72,47 @@ const registerUser = async (req, res) => {
   }).save();
 
   if (req.file && req.file.key) {
-    const storageProfile = multer.diskStorage({
-      destination: (req, file, cb) => {
-        const folder = `public/images/profilepictures/`;
-        cb(null, folder);
-      },
-      filename: (req, file, cb) => {
-        cb(null, `${req.user._id.toString()}.jpeg`);
-      },
-    });
+    try {
+      // 1. Copy the object to the new name
+      await s3Storage.send(
+        new CopyObjectCommand({
+          Bucket: "golden8",
+          CopySource: `golden8/${req.file.key}`,
+          Key: `images/profilepictures/${user._id}.jpeg`,
+        }),
+      );
 
-    const createProfilePic = multer({ storage: storageProfile }).single(
-      "image"
-    );
+      // 2. Delete the original object
+      await s3Storage.send(
+        new DeleteObjectCommand({
+          Bucket: "golden8",
+          Key: req.file.key,
+        }),
+      );
+
+      // 3. Update image url
+      let path = `images/profilepictures/${user._id.toString()}.jpeg`;
+      let url = await getSignedUrl(
+        s3Storage,
+        new GetObjectCommand({
+          Bucket: "golden8",
+          Key: path,
+        }),
+        { expiresIn: 172800 },
+      ); //expires in 48 hours
+      let updUrl = await User.updateOne(
+        { _id: new ObjectId(user._id) },
+        {
+          $set: {
+            imageURL: url,
+          },
+        },
+      );
+
+      console.log("Object successfully renamed.");
+    } catch (err) {
+      console.error("Error renaming object:", err);
+    }
   }
 
   try {
@@ -93,7 +123,7 @@ const registerUser = async (req, res) => {
 
       user.detailsOTP.OTP = parseInt(otp);
       user.detailsOTP.expiryTimeOTP = otpDate.setMinutes(
-        otpDate.getMinutes() + 5
+        otpDate.getMinutes() + 5,
       );
       await user.save();
 
@@ -188,7 +218,7 @@ export const forgotPassword = async (req, res) => {
     // if the user exists generate otp and save
     user.detailsOTP.OTP = parseInt(otp);
     user.detailsOTP.expiryTimeOTP = otpDate.setMinutes(
-      otpDate.getMinutes() + 5
+      otpDate.getMinutes() + 5,
     );
 
     await user.save();
@@ -263,7 +293,7 @@ export const resetPassword = async (req, res) => {
         detailsOTP: null,
       },
     },
-    { new: true }
+    { new: true },
   );
 
   res.send({

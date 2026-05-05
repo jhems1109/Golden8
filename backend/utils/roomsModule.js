@@ -4,7 +4,13 @@ import SystemParameterModel from "../models/systemParameter.model.js";
 import RoomModel from "../models/room.model.js";
 import PhotoModel from "../models/photo.model.js";
 import { getPhotos } from "./photosModule.js";
-import fs from "fs";
+import { s3Storage } from "../config/s3-bucket.js";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import {
+  GetObjectCommand,
+  CopyObjectCommand,
+  DeleteObjectCommand,
+} from "@aws-sdk/client-s3";
 
 let ObjectId = mongoose.Types.ObjectId;
 
@@ -22,6 +28,7 @@ export const getRooms = async function () {
         basePrice: 1,
         maxPax: 1,
         dspPriority: 1,
+        imageURL: 1,
       },
     },
     {
@@ -120,6 +127,7 @@ export const createRoom = async function (userId, data) {
       basePrice: data.basePrice,
       maxPax: data.maxPax,
       dspPriority: data.dspPriority,
+      imageURL: data.imageURL,
       createdBy: new ObjectId(userId),
     });
     await newRoom
@@ -186,18 +194,77 @@ export const updateRoom = async function (userId, roomId, data) {
           basePrice: data.basePrice.trim(),
           maxPax: data.maxPax,
           dspPriority: data.dspPriority,
+          imageURL: data.imageURL,
           updatedBy: new ObjectId(userId),
         },
       },
     )
-      .then(() => {
-        response.requestStatus = "ACTC";
+      .then(async () => {
+        // if name changed, update photos, paths and URLs as well
+        if (validate.oldRoomObject.roomName.trim() !== data.roomName.trim()) {
+          let oldRoomName = validate.oldRoomObject.roomName.trim();
+          let photos = await PhotoModel.find({
+            imagePage: new RegExp(`^${oldRoomName.trim()}$`, "i"),
+          });
+          if (photos.length > 0) {
+            let promise = photos.map(async (photo) => {
+              let newPath = photo.pathName.trim().replace(oldRoomName.trim(), data.roomName.trim());
+              try {
+                await s3Storage.send(
+                  new CopyObjectCommand({
+                    Bucket: "golden8",
+                    CopySource: `golden8/${photo.pathName.trim()}`,
+                    Key: newPath,
+                  }),
+                );        
+                await s3Storage.send(
+                  new DeleteObjectCommand({
+                    Bucket: "golden8",
+                    Key: photo.pathName.trim(),
+                  }),
+                );
+              } catch (err) {
+                console.log("Error occurred while copying/deleting photo with old name");
+              }
+              const url = await getSignedUrl(
+                s3Storage,
+                new GetObjectCommand({
+                  Bucket: "golden8",
+                  Key: newPath,
+                }),
+                { expiresIn: 172800 },
+              );
+              let updUrl = await PhotoModel.updateOne(
+                { _id: new ObjectId(photo._id) },
+                {
+                  $set: {
+                    imagePage: data.roomName.trim(),
+                    pathName: newPath,
+                    imageURL: url,
+                  },
+                },
+              );
+            });
+            try {
+              await s3Storage.send(
+                new DeleteObjectCommand({
+                  Bucket: "golden8",
+                  Key: `images/${oldRoomName.trim()}/`,
+                }),
+              );
+            } catch (err) {
+              console.log("Error occurred while deleting photo directory with old name");
+            }
+          }
+        }
       })
       .catch((error) => {
         response.requestStatus = "RJCT";
         response.errMsg = error;
+        return response;
       });
   }
+  response.requestStatus = "ACTC";
   return response;
 };
 
@@ -222,14 +289,6 @@ export const deleteRoom = async function (userId, roomId) {
       imagePage: {
         $regex: new RegExp(`^${validate.oldRoomObject.roomName.trim()}$`, "i"),
       },
-    });
-    const directoryPath = `public/images/${validate.oldRoomObject.roomName.trim()}`;
-    fs.rm(directoryPath, { recursive: true, force: true }, (err) => {
-      if (err) {
-        console.log("Error deleting directory:", err.message);
-      } else {
-        console.log("Directory and all uploaded files deleted successfully!");
-      }
     });
   }
   return response;

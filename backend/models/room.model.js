@@ -8,6 +8,7 @@ const roomSchema = Schema(
     basePrice: String,
     maxPax: Number,
     dspPriority: Number,
+    imageURL: String,
     createdBy: { type: Schema.Types.ObjectId, ref: "user" },
     updatedBy: { type: Schema.Types.ObjectId, ref: "user" },
   },

@@ -102,10 +102,10 @@ const AdminUserMnt = () => {
               createdAt: details.createdAt,
               updatedAt: details.updatedAt,
             });
-            fetch(`${backend}/profilepictures/${details._id}.jpeg`).then(
+            fetch(details.imageURL).then(
               (res) => {
                 if (res.ok) {
-                  setImageURL(`${backend}/profilepictures/${details._id}.jpeg`);
+                  setImageURL(details.imageURL);
                   setSelectedImage("x");
                 }
               }

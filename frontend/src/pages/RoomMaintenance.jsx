@@ -70,26 +70,20 @@ const RoomMaintenance = () => {
               dspPriority: data.details.dspPriority,
             });
             let oldLogo = "";
-            fetch(`${backendLogos}/${data.details.roomName}.jpeg`).then(
-              (res) => {
-                if (res.ok) {
-                  setLogoURL(
-                    `${backendLogos}/${data.details.roomName}.jpeg`
-                  );
-                  setSelectedLogo("x");
-                  oldLogo = "x";
-                }
-                setOldValues({
-                  roomName: data.details.roomName,
-                  shortDesc: data.details.shortDesc,
-                  description: data.details.description,
-                  basePrice: data.details.basePrice,
-                  maxPax: data.details.maxPax,
-                  dspPriority: data.details.dspPriority,
-                  logo: oldLogo === "x" ? "x" : null,
-                })
-              }
-            )
+            if (data.details.imageURL && data.details.imageURL !== "") {
+              setLogoURL(data.details.imageURL);
+              oldLogo = "x";
+              setSelectedLogo("x");
+            }
+            setOldValues({
+              roomName: data.details.roomName,
+              shortDesc: data.details.shortDesc,
+              description: data.details.description,
+              basePrice: data.details.basePrice,
+              maxPax: data.details.maxPax,
+              dspPriority: data.details.dspPriority,
+              logo: oldLogo === "x" ? "x" : null,
+            });
             handleAction({ type: "Update", title: "Update Room" });
             setDeleteButton(false);
           }
@@ -107,7 +101,7 @@ const RoomMaintenance = () => {
       setSelectedLogo(event.target.files[0]);
       setCurrentValues({ ...currValues, logo: event.target.files[0] });
       setLogoURL(URL.createObjectURL(event.target.files[0]));
-      setLogoChanged(true)
+      setLogoChanged(true);
     }
   };
 
@@ -115,7 +109,7 @@ const RoomMaintenance = () => {
     setSelectedLogo(null);
     setCurrentValues({ ...currValues, logo: null });
     setLogoURL(null);
-    setLogoChanged(action.type === "Creation" ? false : true)
+    setLogoChanged(action.type === "Creation" ? false : true);
   };
 
   const handleRoomDetails = (e) => {
@@ -157,8 +151,8 @@ const RoomMaintenance = () => {
     let error = false;
     error = validateInput();
     if (!error) {
-      let data = { ...currValues, logoChanged: logoChanged };
-      //let data = { ...currValues, logoChanged: false }; //TEMP
+      let oldName = action.type === "Creation" ? null : oldValues.roomName;
+      let data = { ...currValues, logoChanged: logoChanged, oldName: oldName };
       const formData = new FormData();
       Object.keys(data).forEach((key) => {
         Array.isArray(data[key])
@@ -171,9 +165,9 @@ const RoomMaintenance = () => {
           method: "POST",
           credentials: "include",
           body: formData,
-        headers: {
-          Authorization: token,
-        },
+          headers: {
+            Authorization: token,
+          },
         })
           .then((response) => response.json())
           .then((data) => {
@@ -205,7 +199,7 @@ const RoomMaintenance = () => {
         } else {
           setIsLoading(true);
           fetch(`${backend}/updateroom/${routeParams.roomid}`, {
-            method: "POST",
+            method: "PUT",
             credentials: "include",
             body: formData,
             headers: {
@@ -280,11 +274,11 @@ const RoomMaintenance = () => {
   const navigateDelete = () => {
     if (
       confirm(
-        "Please confirm if you want to proceed with deletion of this room."
+        "Please confirm if you want to proceed with deletion of this room.",
       )
     ) {
       setIsLoading(true);
-      let data = oldValues
+      let data = oldValues;
       fetch(`${backend}/deleteroom/${routeParams.roomid}`, {
         method: "DELETE",
         credentials: "include",

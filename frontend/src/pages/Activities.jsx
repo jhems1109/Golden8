@@ -49,7 +49,7 @@ const Activities = () => {
     let span = document.getElementsByClassName("close")[0];
     img.onclick = function () {
       modal.style.display = "block";
-      modalImg.src = `${backend}/${photos[photoIdx].pathName}`;
+      modalImg.src = `${photos[photoIdx].imageURL}`;
       captionText.innerHTML = photos[photoIdx].imageDesc;
     };
 
@@ -59,7 +59,7 @@ const Activities = () => {
         slideIndex = photos.length - 1;
       }
       modal.style.display = "block";
-      modalImg.src = `${backend}/${photos[slideIndex].pathName}`;
+      modalImg.src = `${photos[slideIndex].imageURL}`;
       captionText.innerHTML = photos[slideIndex].imageDesc;
       show(index, slideIndex);
     };
@@ -70,7 +70,7 @@ const Activities = () => {
         slideIndex = 0;
       }
       modal.style.display = "block";
-      modalImg.src = `${backend}/${photos[slideIndex].pathName}`;
+      modalImg.src = `${photos[slideIndex].imageURL}`;
       captionText.innerHTML = photos[slideIndex].imageDesc;
       show(index, slideIndex);
     };
@@ -106,7 +106,7 @@ const Activities = () => {
                       <Row className="align-items-center">
                         <Col>
                           <Image
-                            src={`${backend}/${photo.pathName}`}
+                            src={photo.imageURL}
                             id={index}
                             className="mt-2 mb-2 shadow object-fit-cover border"
                             alt={photo.imageDesc}

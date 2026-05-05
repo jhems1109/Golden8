@@ -31,6 +31,7 @@ export const getTopRooms = async function () {
         roomName: 1,
         shortDesc: 1,
         dspPriority: 1,
+        imageURL: 1,
       },
     },
     {

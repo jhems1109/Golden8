@@ -64,6 +64,7 @@ export const getAccountDetails = async function (userId) {
         userName: 1,
         email: 1,
         phoneNumber: 1,
+        imageURL: 1,
       },
     },
   ])
@@ -115,6 +116,7 @@ export const updateAccount = async function (userId, details) {
         phoneNumber: details.phoneNumber.trim(),
         firstName: details.firstName.trim(),
         lastName: details.lastName.trim(),
+        imageURL: details.imageURL,
       },
     }
   );

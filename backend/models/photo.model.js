@@ -6,6 +6,7 @@ const photoSchema = Schema(
     pathName: { type: String, required: true},
     imageDesc: String,
     dspPriority: Number,
+    imageURL: String,
     createdBy: { type: Schema.Types.ObjectId, ref: "user" },
     updatedBy: { type: Schema.Types.ObjectId, ref: "user" },
   },

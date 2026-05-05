@@ -43,6 +43,7 @@ export const adminGetUsers = async function () {
         fullName: 1,
         email: 1,
         userType: 1,
+        imageURL: 1,
       },
     },
   ]).catch((error) => {
@@ -138,6 +139,7 @@ export const adminCreateUser = async function (details) {
     phoneNumber: details.phoneNumber,
     firstName: details.firstName,
     lastName: details.lastName,
+    imageURL: details.imageURL,
   });
   await user
     .save()
@@ -220,6 +222,7 @@ export const adminUpdateUser = async function (userId, details) {
         phoneNumber: details.phoneNumber,
         firstName: details.firstName,
         lastName: details.lastName,
+        imageURL: details.imageURL,
         successfulLoginDetails: details.successfulLoginDetails,
         failedLoginDetails: details.failedLoginDetails,
         detailsOTP: details.detailsOTP,
@@ -306,6 +309,7 @@ export const adminGetRooms = async function () {
         basePrice: 1,
         maxPax: 1,
         dspPriority: 1,
+        imageURL: 1,
       },
     },
     {
@@ -356,6 +360,7 @@ export const adminGetRoomDetails = async function (roomId) {
     basePrice: room.basePrice,
     maxPax: room.maxPax,
     dspPriority: room.dspPriority,
+    imageURL: room.imageURL,
     createdBy: room.createdBy,
     createdAt: room.createdAt,
     updatedAt: room.updatedAt,
@@ -381,6 +386,7 @@ export const adminCreateRoom = async function (details) {
     basePrice: details.basePrice,
     maxPax: details.maxPax,
     dspPriority: details.dspPriority,
+    imageURL: details.imageURL,
     createdBy: new ObjectId(valid.roomCreator),
   });
   await newRoom
@@ -420,6 +426,7 @@ export const adminUpdateRoom = async function (roomId, details) {
         basePrice: details.basePrice,
         maxPax: details.maxPax,
         dspPriority: details.dspPriority,
+        imageURL: details.imageURL,
         createdBy: new ObjectId(valid.roomCreator),
       },
     }

@@ -69,12 +69,8 @@ const AdminRoomMnt = () => {
               createdAt: data.details.createdAt,
               updatedAt: data.details.updatedAt,
             });
-            fetch(`${backend}/logos/${routeParams.roomid}.jpeg`).then((res) => {
-              if (res.ok) {
-                setLogoURL(`${backend}/logos/${routeParams.roomid}.jpeg`);
-                setSelectedLogo("x");
-              }
-            });
+            setLogoURL(data.details.imageURL);
+            setSelectedLogo("x");
           }
           setIsLoading(false);
         })

@@ -73,6 +73,7 @@ const RoomDetails = () => {
             maxPax: data.details.maxPax,
             dspPriority: data.details.dspPriority,
             displayUpdateButton: true,
+            imageURL: data.details.imageURL ? data.details.imageURL : "",
           });
           setPhotos(data.photos);
           setLoading(false);
@@ -99,7 +100,7 @@ const RoomDetails = () => {
     let span = document.getElementsByClassName("close")[0];
     img.onclick = function () {
       modal.style.display = "block";
-      modalImg.src = `${backend}/${photos[photoIdx].pathName}`;
+      modalImg.src = `${photos[photoIdx].imageURL}`;
       captionText.innerHTML = photos[photoIdx].imageDesc;
     };
 
@@ -109,7 +110,7 @@ const RoomDetails = () => {
         slideIndex = photos.length - 1;
       }
       modal.style.display = "block";
-      modalImg.src = `${backend}/${photos[slideIndex].pathName}`;
+      modalImg.src = `${photos[slideIndex].imageURL}`;
       captionText.innerHTML = photos[slideIndex].imageDesc;
       show(index, slideIndex);
     };
@@ -120,7 +121,7 @@ const RoomDetails = () => {
         slideIndex = 0;
       }
       modal.style.display = "block";
-      modalImg.src = `${backend}/${photos[slideIndex].pathName}`;
+      modalImg.src = `${photos[slideIndex].imageURL}`;
       captionText.innerHTML = photos[slideIndex].imageDesc;
       show(index, slideIndex);
     };
@@ -182,7 +183,7 @@ const RoomDetails = () => {
                 >
                   <Row className="text-center m-3">
                     <Image
-                      src={`${backendLogos}/${roomInfo.roomName}.jpeg`}
+                      src={roomInfo.imageURL}
                       onError={({ currentTarget }) => {
                         currentTarget.onerror = null; // prevents looping
                         currentTarget.src = `/images/default logo.jpeg`;
@@ -227,7 +228,7 @@ const RoomDetails = () => {
                                 <Row className="align-items-center">
                                   <Col>
                                     <Image
-                                      src={`${backend}/${photo.pathName}`}
+                                      src={photo.imageURL}
                                       onError={({ currentTarget }) => {
                                         currentTarget.onerror = null; // prevents looping
                                         currentTarget.src = `/images/default logo.jpeg`;

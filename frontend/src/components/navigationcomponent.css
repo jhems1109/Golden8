@@ -1,9 +1,17 @@
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
 .justify-content-center {
   gap: 5rem;
 }
 
-.navbar-brand {
-  padding-left: 1%;
+.navbar-icons {
+  padding-left: 0px !important;
+  padding-right: 0.5% !important;
 }
 
 .nav-center {
@@ -72,7 +80,7 @@
     max-width: 30%;
   }
   .phoneicon {
-    max-width: 3em;
-    max-height: 3em;
+    max-width: 4.5em;
+    max-height: 4.5em;
   }
 }

@@ -12,10 +12,11 @@ import { s3Storage } from "../config/s3-bucket.js";
 
 const router = express.Router();
 
+// Store temporary profile picture as userid is not yet created at this stage
 const storage = multerS3({
   s3: s3Storage,
-  bucket: "golden8-images",
-  // acl: "public-read",
+  bucket: "golden8",
+  contentType: multerS3.AUTO_CONTENT_TYPE, 
   key: (req, file, cb) => {
     const fileName = `images/profilepictures/${
       Date.now() + "-" + file.originalname

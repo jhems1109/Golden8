@@ -143,7 +143,7 @@ const Home = () => {
     let span = document.getElementsByClassName("close")[0];
     img.onclick = function () {
       modal.style.display = "block";
-      modalImg.src = `${backend}/${photos[photoIdx].pathName}`;
+      modalImg.src = `${photos[photoIdx].imageURL}`;
       captionText.innerHTML = photos[photoIdx].imageDesc;
     };
 
@@ -151,7 +151,7 @@ const Home = () => {
       let slideIndex = photoIdx - 1
       if (slideIndex < 0) {slideIndex = photos.length - 1}
       modal.style.display = "block";
-      modalImg.src = `${backend}/${photos[slideIndex].pathName}`;
+      modalImg.src = `${photos[slideIndex].imageURL}`;
       captionText.innerHTML = photos[slideIndex].imageDesc
       show(index, slideIndex)
     }
@@ -160,7 +160,7 @@ const Home = () => {
       let slideIndex = photoIdx + 1
       if (slideIndex + 1 > photos.length) {slideIndex = 0}
       modal.style.display = "block";
-      modalImg.src = `${backend}/${photos[slideIndex].pathName}`;
+      modalImg.src = `${photos[slideIndex].imageURL}`;
       captionText.innerHTML = photos[slideIndex].imageDesc
       show(index, slideIndex)
     }
@@ -220,7 +220,7 @@ const Home = () => {
                   {topRooms.map((room, index) => (
                     <div key={index}>
                       <FlippableCard
-                        imageUrl={`${backendLogos}/${room.roomName}.jpeg`}
+                        imageUrl={room.imageURL}
                         cardText={room.roomName}
                         shortDesc={room.shortDesc}
                         roomId={room.roomId}
@@ -245,7 +245,7 @@ const Home = () => {
                       <Row className="align-items-center">
                         <Col>
                           <Image
-                            src={`${backend}/${photo.pathName}`}
+                            src={photo.imageURL}
                             onError={({ currentTarget }) => {
                               currentTarget.onerror = null; // prevents looping
                               currentTarget.src = `/images/default logo.jpeg`;

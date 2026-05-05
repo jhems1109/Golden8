@@ -31,8 +31,8 @@ async function registerUser(data) {
   });
   const configMultiForm = {
     headers: {
-      Accept: "application/json",
-      "Content-Type": "multipart/form-data",
+      //Accept: "application/json",
+      //"Content-Type": "multipart/form-data",
     },
     withCredentials: true,
     credentials: "include",

@@ -16,6 +16,7 @@ const userSchema = Schema(
     phoneNumber: String,
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
+    imageURL: String,
     notifications: [notificationsSchema],
     successfulLoginDetails: [
       {

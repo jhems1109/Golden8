@@ -108,7 +108,7 @@ const AdminUsers = () => {
   const columns = useMemo(
     () => [
       {
-        accessorFn: (row) => `${backend}${row.pathName}`,
+        accessorFn: (row) => `${row.imageURL}`,
         header: "Image",
         size: 50,
         // Custom cell rendering for the image

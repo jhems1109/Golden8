@@ -62,6 +62,7 @@ const Profile = () => {
               : "",
             firstName: data.details.firstName,
             lastName: data.details.lastName,
+            imageURL: data.details.imageURL ? data.details.imageURL : "",
           });
           setLoading(false);
         }
@@ -82,7 +83,7 @@ const Profile = () => {
               <Card.Body>
                 <div className="d-flex flex-column align-items-center text-center">
                   <img
-                    src={`${backendPhotos}/${userInfo.userId}.jpeg`}
+                    src={`${userInfo.imageURL}`}
                     onError={({ currentTarget }) => {
                       currentTarget.onerror = null; // prevents looping
                       currentTarget.src = `/images/default profile.png`;

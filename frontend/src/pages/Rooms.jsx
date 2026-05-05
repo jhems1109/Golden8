@@ -101,6 +101,7 @@ export default function Rooms() {
                       description={room.description}
                       basePrice={room.basePrice}
                       maxPax={room.maxPax}
+                      imageURL={room.imageURL}
                       expanded={index === index}
                       onClick={() => {
                         navigate(`/room/${room.roomId}`);

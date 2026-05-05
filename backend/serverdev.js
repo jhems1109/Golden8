@@ -6,7 +6,7 @@ import connectDB from "./config/db.js";
 import cron from "node-cron"
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import { authenticate, getTokenFromCookies, adminAuthenticate } from "./middlewares/authMiddleware.js";
-import { updateProfilePic, updateRoomLogo, deleteRoomLogo, createPagePhotos, deletePagePhotos} from "./middlewares/fileUploadMiddleware.js";
+import { updateProfilePic, deleteProfilePic, updateRoomLogo, deleteRoomLogo, createPagePhotos, deletePagePhotos } from "./middlewares/fileUploadMiddleware.js";
 import userRoutes from "./routes/userRoutes.js";
 
 import { getHomeDetails } from "./utils/homePageModule.js";
@@ -15,7 +15,7 @@ import { getMyProfile, getAccountDetails, updateAccount,
   changePassword, unlockAccounts, deletePendingAccounts } from "./utils/usersModule.js";
 import { getRooms, getRoomDetailsAndButtons, createRoom, getRoomDetailsForUpdate, updateRoom, deleteRoom
   } from "./utils/roomsModule.js";
-import { getPhotos, getPhotoDetails, createPhoto, updatePhoto, deletePhoto } from "./utils/photosModule.js";
+import { getPhotos, getPhotoDetails, createPhoto, updatePhoto, deletePhoto, updateImageURLs } from "./utils/photosModule.js";
 import { getUnreadNotifsCount, getUserNotifications, readUnreadNotif, processContactUsMsgs, housekeepNotifications } from "./utils/notificationsModule.js";
 import { adminGetUsers, adminGetUserDetails, adminCreateUser, adminUpdateUser, adminDeleteUser, 
   adminGetRooms, adminGetRoomDetails, adminCreateRoom, adminUpdateRoom,
@@ -145,7 +145,7 @@ app.post("/admin", authenticate, (req, res) => {
   }
 });
 
-app.post("/createroom", authenticate, updateRoomLogo, (req, res) => {
+app.post("/createroom", authenticate, updateRoomLogo, (req, res) => {   
   createRoom(req.user._id.toString(), req.body).then((data) => {
     res.json(data);
   });
@@ -159,7 +159,7 @@ app.post("/getroomdetailsupdate/:roomid", authenticate, (req, res) => {
   );
 });
 
-app.post("/updateroom/:roomid", authenticate, updateRoomLogo, (req, res) => {
+app.put("/updateroom/:roomid", authenticate, updateRoomLogo, (req, res) => {
   updateRoom(req.user._id.toString(), req.params.roomid, req.body).then(
     (data) => {
       res.json(data);
@@ -215,7 +215,7 @@ app.post("/photocreate", authenticate, createPagePhotos, (req, res) => {
   });
 });
 
-app.put("/photoupdate/:photoid", authenticate, (req, res) => {
+app.put("/photoupdate/:photoid", authenticate, createPagePhotos, (req, res) => {
   updatePhoto(req.user._id.toString(), req.params.photoid, req.body).then((data) => {
     res.json(data);
   });
@@ -245,7 +245,7 @@ app.post("/admingetuser/:userid", adminAuthenticate, (req, res) => {
   });
 });
 
-app.post("/admincreateuser", adminAuthenticate, updateProfilePic, (req, res) => {
+app.post("/admincreateuser", adminAuthenticate, (req, res) => { //updateProfilePic
   adminCreateUser(req.body).then((data) => {
     res.json(data);
   });
@@ -257,7 +257,7 @@ app.post("/adminupdateuser/:userid", adminAuthenticate, updateProfilePic, (req, 
   });
 });
 
-app.delete("/admindeleteuser/:userid", adminAuthenticate, updateProfilePic, (req, res) => {
+app.delete("/admindeleteuser/:userid", adminAuthenticate, deleteProfilePic, (req, res) => {  
   adminDeleteUser(req.params.userid).then((data) => {
     res.json(data);
   });
@@ -287,7 +287,7 @@ app.post("/adminupdateroom/:roomid", adminAuthenticate, updateRoomLogo, (req, re
   });
 });
 
-app.delete("/admindeleteroom/:roomid", adminAuthenticate, updateRoomLogo, (req, res) => {
+app.delete("/admindeleteroom/:roomid", adminAuthenticate, deleteRoomLogo, (req, res) => {
   adminDeleteRoom(req.params.roomid).then((data) => {
     res.json(data);
   });
@@ -323,13 +323,19 @@ app.delete("/admindeleteparm/:parmid", adminAuthenticate, (req, res) => {
   });
 });
 
+// Run job to update image URLs every 1AM
+cron.schedule('0 1 * * *', () => {
+  updateImageURLs()
+  .then( console.log("Update image URLs job ran."))
+});
+
 // Run job to unlock accounts every midnight
 cron.schedule('0 0 * * *', () => {
   unlockAccounts()
   .then( console.log("Unlock accounts job ran."))
 });
 
-// Run job to delete pending accounts every 10mins
+// Run job to delete pending accounts every midnight
 cron.schedule('0 0 * * *', () => {
   deletePendingAccounts()
   .then( console.log("Deletion of pending accounts job ran."))

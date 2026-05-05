@@ -10,7 +10,6 @@ const backend =
   import.meta.env.MODE === "development"
     ? "http://localhost:8000"
     : "https://golden8.onrender.com";
-const backendPhotos = backend.trim() + "/images/profilepictures";
 
 const AccountMaintenance = () => {
   //hooks
@@ -86,24 +85,20 @@ const AccountMaintenance = () => {
               lastName: data.details.lastName,
             });
             let imageFound = false;
-            fetch(`${backendPhotos}/${data.details.userId}.jpeg`).then(
-              (res) => {
-                if (res.ok) {
-                  setImageURL(`${backendPhotos}/${data.details.userId}.jpeg`);
-                  imageFound = true;
-                  setSelectedImage("x");
-                }
-                setOldValues({
-                  userName: data.details.userName,
-                  phoneNumber: data.details.phoneNumber
-                    ? data.details.phoneNumber
-                    : "",
-                  firstName: data.details.firstName,
-                  lastName: data.details.lastName,
-                  image: imageFound ? "x" : null,
-                });
-              },
-            );
+            if (data.details.imageURL && data.details.imageURL !== "") {
+              setImageURL(data.details.imageURL);
+              imageFound = true;
+              setSelectedImage("x");
+            }
+            setOldValues({
+              userName: data.details.userName,
+              phoneNumber: data.details.phoneNumber
+                ? data.details.phoneNumber
+                : "",
+              firstName: data.details.firstName,
+              lastName: data.details.lastName,
+              image: imageFound ? "x" : null,
+            });
           }
           setIsLoading(false);
         })
@@ -406,7 +401,7 @@ const AccountMaintenance = () => {
                       </svg>
                       <button
                         type="button"
-                        className="btn btn-secondary mb-3 btn-sm"
+                        className="btn btn-secondary m-3 btn-sm"
                         onClick={(e) => handleUploadClick(e)}
                       >
                         Upload

@@ -68,17 +68,16 @@ const PhotoMnt = () => {
             setCurrentValues({
               ...currValues,
               imagePage: details.imagePage,
+              pathName: details.pathName,
               imageDesc: details.imageDesc,
               dspPriority: details.dspPriority,
               createdAt: details.createdAt,
               updatedAt: details.updatedAt,
             });
-            fetch(`${backend}/${details.pathName}`).then((res) => {
-              if (res.ok) {
-                setImageURL(`${backend}/${details.pathName}`);
-                setSelectedImage("x");
-              }
-            });
+            if (details.imageURL && details.imageURL !== "") {
+              setImageURL(details.imageURL);
+              setSelectedImage("x");
+            }
           }
           setIsLoading(false);
         })
@@ -115,14 +114,14 @@ const PhotoMnt = () => {
     error = validateInput();
     if (!error) {
       let data = { ...currValues, imageChanged: imageChanged };
+      const formData = new FormData();
+      Object.keys(data).forEach((key) => {
+        Array.isArray(data[key])
+          ? data[key].forEach((value) => formData.append(key + "[]", value))
+          : formData.append(key, data[key]);
+      });
       setIsLoading(true);
       if (action.type === "Creation") {
-        const formData = new FormData();
-        Object.keys(data).forEach((key) => {
-          Array.isArray(data[key])
-            ? data[key].forEach((value) => formData.append(key + "[]", value))
-            : formData.append(key, data[key]);
-        });
         fetch(`${backend}/photocreate`, {
           method: "POST",
           credentials: "include",
@@ -148,9 +147,8 @@ const PhotoMnt = () => {
         fetch(`${backend}/photoupdate/${routeParams.photoid}`, {
           method: "PUT",
           credentials: "include",
-          body: JSON.stringify(data),
+          body: formData,
           headers: {
-            "Content-Type": "Application/JSON",
             Authorization: token,
           },
         })
@@ -178,10 +176,7 @@ const PhotoMnt = () => {
     let errResp = false;
     let errMsgs = [];
     let focusON = false;
-    if (
-      (imageChanged === false || imageURL === null) &&
-      action.type === "Creation"
-    ) {
+    if (!imageURL || imageURL === "") {
       errMsgs.push("Photo is required.");
       if (!focusON) {
         //document.getElementById("image").focus();
@@ -250,7 +245,7 @@ const PhotoMnt = () => {
                 <label htmlFor="imageDesc" className="form-label">
                   Image Description
                 </label>
-              
+
                 <input
                   id="imageDesc"
                   name="imageDesc"
@@ -296,7 +291,6 @@ const PhotoMnt = () => {
                       type="button"
                       className="btn btn-secondary mb-3 btn-sm"
                       onClick={() => inputFile.current.click()}
-                      disabled={action.type === "Creation" ? false : true}
                     >
                       Replace
                     </button>

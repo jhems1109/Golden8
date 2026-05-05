@@ -23,18 +23,18 @@ const NavigationComponent = () => {
     >
       <Container fluid>
         <Row className="w-100 h-10 align-items-center">
-          <Col className="justify-content-center align-self-center">
+          <Col className="justify-content-center align-self-center navbar-icons">
             <Navbar.Brand href="/" className="logo-container">
               <img
                 src="/images/mainlogo.jpg"
                 alt="Golden8-lg"
                 border="0"
-                style={{ width: "3em"}}
+                style={{ width: "4em"}}
                 className="m-auto Sirv image-main smscreen"
               />
             </Navbar.Brand>
           </Col>
-          <Col>
+          <Col className="navbar-icons">
             <Navbar.Collapse className="justify-content-end">
               <Nav>
                 {isSignedIn === true && (
@@ -45,14 +45,14 @@ const NavigationComponent = () => {
                         max={100}
                         className="trialbtn btn btn-light"
                       >
-                        <FaBell className="m-auto phoneicon" style={{ width: "4em", height: "4em"}}/>
+                        <FaBell className="m-auto phoneicon" style={{ width: "5em", height: "5em"}}/>
                       </Badge>
                     </a>
                 )}
                 {isSignedIn === true && (
                   <Dropdown title="Profile" className="pad-icons" >
                     <Dropdown.Toggle className="trialbtn btn btn-light" >
-                      <FaUserCircle className="m-auto phoneicon" style={{ width: "4em", height: "4em"}} />
+                      <FaUserCircle className="m-auto phoneicon" style={{ width: "5em", height: "5em"}} />
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="dropdown-menu dropdown-menu-end">
                       {!isAdmin && (
@@ -99,7 +99,7 @@ const NavigationComponent = () => {
                 )}
                 <Dropdown title="Menu" className="pad-icons">
                   <Dropdown.Toggle className="trialbtn btn btn-light">
-                    <IoMenu className="m-auto phoneicon" style={{ width: "4em", height: "4em"}}/>
+                    <IoMenu className="m-auto phoneicon" style={{ width: "5em", height: "5em"}}/>
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="dropdown-menu dropdown-menu-end">
                     <>
