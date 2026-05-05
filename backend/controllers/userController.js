@@ -1,11 +1,4 @@
-/**
- * create user
- * login user
- * authenticate user
- * logout user
- * delete user
- */
-
+import mongoose from "mongoose";
 import User from "../models/user.model.js";
 import { getSysParmByParmId } from "../utils/sysParmModule.js";
 import { generateOTPEmail } from "../templates/otpEmail.js";
@@ -17,7 +10,10 @@ import {
 } from "../utils/auth.utils.js";
 //import multer from "multer";
 import { s3Storage } from "../config/s3-bucket.js";
-import { CopyObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import { GetObjectCommand, CopyObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+let ObjectId = mongoose.Types.ObjectId;
 
 const registerUser = async (req, res) => {
   const { firstName, lastName, userName, email, password, phoneNumber } =
@@ -89,7 +85,7 @@ const registerUser = async (req, res) => {
           Key: req.file.key,
         }),
       );
-
+console.log(93)
       // 3. Update image url
       let path = `images/profilepictures/${user._id.toString()}.jpeg`;
       let url = await getSignedUrl(
@@ -100,6 +96,7 @@ const registerUser = async (req, res) => {
         }),
         { expiresIn: 172800 },
       ); //expires in 48 hours
+      console.log('104 ' + url)
       let updUrl = await User.updateOne(
         { _id: new ObjectId(user._id) },
         {
